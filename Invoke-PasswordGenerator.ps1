@@ -27,8 +27,17 @@ function Invoke-PasswordGenerator {
         Uri = $passGenUri;
         ContentType = "application/json"
     }
-    $script:passGenReqData = Invoke-RestMethod @passGenParams -Verbose
-    Write-Output "`r`nYour password is: $($script:passGenReqData.Password)`r`n"
+    $script:passGenReqData = Invoke-RestMethod @passGenParams -Verbose -ErrorAction SilentlyContinue -ErrorVariable passGenReqDataERR
+    if ($passGenReqDataERR) {
+        Write-Output "ERROR - Unable to retreive a password - $($passGenReqDataERR.InnerException.Message)`r`n"
+        Break;
+    }
+    if (!$script:passGenReqData.Password) {
+        Write-Output "ERROR - Unable to retreive a password."
+        Break;
+    } else {
+        Write-Output "`r`nYour password is: $($script:passGenReqData.Password)`r`n"
+    }
 }
 
 Clear-Host
