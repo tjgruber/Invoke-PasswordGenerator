@@ -11,6 +11,7 @@ Note: http://getanewpassword.com does not support POST, even though it says it d
 * Does not seem to work in PowerShell 5.1 using certian buggy versions of .NET.
   * I think this is the related issue, but not sure because it's old: https://github.com/PowerShell/PowerShell/issues/2054
 * However, it DOES work in PowerShell Core (6.1), Postman, etc... :)
+* Adduppercase API option is broken. Assuming 'false' is supposed to turn it off, it stays on.
 
 ![Example](images/Invoke-PasswordGenerator_PS51.jpg?raw=true "PS5.1 Example")
 
