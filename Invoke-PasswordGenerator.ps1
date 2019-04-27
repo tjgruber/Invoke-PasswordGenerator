@@ -27,8 +27,8 @@ function Invoke-PasswordGenerator {
         Uri = $passGenUri;
         ContentType = "application/json"
     }
-    $passGenReqData = Invoke-RestMethod @passGenParams -Verbose
-    Write-Output "`r`nYour password is: $($passGenReqData.Password)`r`n"
+    $script:passGenReqData = Invoke-RestMethod @passGenParams -Verbose
+    Write-Output "`r`nYour password is: $($script:passGenReqData.Password)`r`n"
 }
 
 Clear-Host
